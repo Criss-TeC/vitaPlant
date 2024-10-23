@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backcolor"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textDeviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del dispositivo"
+        android:textColor="@color/accentcolor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/progressHumidity"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="16dp"
+        app:cpb_background_progressbar_color="#3965B08A"
+        app:cpb_background_progressbar_width="3dp"
+        app:cpb_progress="100"
+        app:cpb_progress_max="140"
+        app:cpb_progressbar_color="@color/accentcolor"
+        app:cpb_progressbar_width="7dp"
+        app:cpb_start_angle="230"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDeviceName" />
+    <TextView
+        android:id="@+id/textHumidityPercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/accentcolor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/progressHumidity"
+        app:layout_constraintEnd_toEndOf="@+id/progressHumidity"
+        app:layout_constraintStart_toStartOf="@+id/progressHumidity"
+        app:layout_constraintTop_toTopOf="@+id/progressHumidity" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

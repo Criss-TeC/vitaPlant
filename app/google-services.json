@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "293666915794",
+    "project_id": "vitaplant-32e5a",
+    "storage_bucket": "vitaplant-32e5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293666915794:android:d2ca8cec45d80acf88740b",
+        "android_client_info": {
+          "package_name": "com.example.vitaplant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANYWSmbU8Z43C7UrLow0fRMBBlFAqEwBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

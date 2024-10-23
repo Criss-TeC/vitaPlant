@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">vitaPlant</string>
+    <string name="user_name">Nombre</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="prompt2_password">Reingrese Contraseña</string>
+    <string name="action_sign_in">Ingresar</string>
+    <string name="register">Registrar</string>
+    <string name="logo_des">Logo</string>
+    <string name="rec_pass">Recuperar contraseña</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>
