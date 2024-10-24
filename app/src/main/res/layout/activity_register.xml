@@ -9,18 +9,17 @@
     tools:context=".RegisterActivity">
 
 
-
-
     <ImageView
         android:id="@+id/logo"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:contentDescription="@string/logo_des"
+        android:tint="@color/accentcolor"
         app:layout_constraintBottom_toTopOf="@+id/formRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logovitaplant" />
+        app:srcCompat="@drawable/logovitaplant_noback" />
 
     <LinearLayout
         android:id="@+id/formRegister"
@@ -58,6 +57,7 @@
             android:backgroundTint="#1BFFFFFF"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
+            android:textColor="@color/accentcolor"
             android:textColorHint="@color/accentcolor" />
 
         <EditText
@@ -71,6 +71,7 @@
             android:backgroundTint="#1BFFFFFF"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
+            android:textColor="@color/accentcolor"
             android:textColorHint="@color/accentcolor" />
 
         <EditText
@@ -84,6 +85,7 @@
             android:backgroundTint="#1BFFFFFF"
             android:hint="@string/prompt2_password"
             android:inputType="textPassword"
+            android:textColor="@color/accentcolor"
             android:textColorHint="@color/accentcolor" />
 
         <Button

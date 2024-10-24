@@ -1,6 +1,8 @@
 package com.example.vitaplant;
 import com.example.vitaplant.DeviceAdapter;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,15 +24,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewDevices);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 columnas
 
-        // lista de dispositivos (esto puede venir de una base de datos)
-        List<Device> devices = new ArrayList<>();
-        devices.add(new Device("Dispositivo 1", 45));
-        devices.add(new Device("Dispositivo 2", 70));
-        devices.add(new Device("Dispositivo 3", 85));
-        devices.add(new Device("Dispositivo 4", 30));
+        // Crea una instancia del DeviceAdapter
+        deviceAdapter = new DeviceAdapter();
 
-        // adaptador con la lista de dispositivos
-        deviceAdapter = new DeviceAdapter(devices);
+        // Asigna el adaptador al RecyclerView
         recyclerView.setAdapter(deviceAdapter);
+
+        // Llama al método loadData para cargar los datos iniciales
+        deviceAdapter.loadData();
+        Log.d("MainActivity", "loadData() llamado"); // Log de la llamada a loadData()
     }
 }

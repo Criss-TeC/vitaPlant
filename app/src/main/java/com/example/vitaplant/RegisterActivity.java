@@ -1,19 +1,16 @@
 package com.example.vitaplant;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.vitaplant.model.Device;
 import com.example.vitaplant.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,9 +37,9 @@ public class RegisterActivity extends AppCompatActivity {
         editTextTextPassword = findViewById(R.id.editTextTextPassword);
         Button registerButton = findViewById(R.id.btn_register);
 
-        // Obtén una instancia de FirebaseDatabase y la referencia a "usuarios"
+        // Obtén una instancia de FirebaseDatabase y la referencia a "users"
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        usersRef = database.getReference("usuarios");
+        usersRef = database.getReference("users");
 
         // Obtén una instancia de FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
@@ -93,19 +90,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         User user = new User(username, email, uid);
 
+        // Agrega el dispositivo al objeto User
+        Device device = new Device("Demostracion", 50); // Ejemplo de dispositivo
+        user.addDevice(device);
+
         // Guarda el objeto User en Realtime Database
-        usersRef.child(uid).setValue(user)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Datos del usuario guardados correctamente
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Error al guardar los datos del usuario
-                    }
-                });
+        usersRef.child(uid).setValue(user);
     }
 }

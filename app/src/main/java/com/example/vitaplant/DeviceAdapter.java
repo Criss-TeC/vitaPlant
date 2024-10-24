@@ -3,23 +3,58 @@ package com.example.vitaplant;  // Asegúrate de que este sea el paquete correct
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.vitaplant.model.Device;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder> {
 
-    private final List<Device> deviceList;
+    private final List<Device> deviceList = new ArrayList<>();
 
-    public DeviceAdapter(List<Device> deviceList) {
-        this.deviceList = deviceList;
+    public DeviceAdapter() {
     }
+    public void loadData() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        if (user != null) {
+            String uid = user.getUid();
+            DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+            DatabaseReference userDevicesRef = database.child("users").child(uid).child("devices");
+
+            userDevicesRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    deviceList.clear();
+                    for (DataSnapshot deviceSnapshot : snapshot.getChildren()) {
+                        String deviceName = deviceSnapshot.child("name").getValue(String.class);
+                        int humidity = deviceSnapshot.child("humidity").getValue(Integer.class);
+                        Device device = new Device(deviceName, humidity);
+                        deviceList.add(device);
+                    }
+                    notifyDataSetChanged();
+                }@Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Maneja el error, por ejemplo, mostrando un mensaje al usuario
+                }
+            });
+        }
+    }
+
 
     @NonNull
     @Override
@@ -41,6 +76,8 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceView
     public int getItemCount() {
         return deviceList.size();
     }
+
+
 
     static class DeviceViewHolder extends RecyclerView.ViewHolder {
         TextView deviceName;

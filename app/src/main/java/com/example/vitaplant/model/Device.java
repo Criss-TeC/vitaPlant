@@ -1,4 +1,4 @@
-package com.example.vitaplant;  // Asegúrate de que este sea el paquete correcto
+package com.example.vitaplant.model;  // Asegúrate de que este sea el paquete correcto
 
 public class Device {
     private String name;
@@ -15,5 +15,13 @@ public class Device {
 
     public int getHumidity() {
         return humidity;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
     }
 }
